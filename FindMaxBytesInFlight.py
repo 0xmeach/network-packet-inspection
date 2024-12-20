@@ -3,25 +3,7 @@
 from scapy.all import *
 
 
-### 
-# LAB REQUIREMENT
-# Implement findMaxBytesInFlight - which takes in the name of a pcap file, and finds
-#                                  the maximum number of bytes in flight during the session
-#                                  Basically highest sequence number of sent packets minus
-#                                  the highest acknowledgement number received
-# Note: you only need to look at direction from server to client 
-# (which you can tell from three way handshake - client will initiate the connection)
-# Note: you need to take into account dropped packets and out of order packets
-# Note: you can use the data structure and helper functions provided, but don't need to.
 
-
-# This class captures some information about a unidirectional flow
-# startSeqNum - the starting TCP sequence number for data sent in this flow
-# ackNumReceived - tracks the highest acknowledgement number received
-# highestSeqNum - for data sent, this holds the highest sequence number seen
-# pktLenOfHighestSeqNumPacket - for the packet that was the highestSeqNum, this is the length of that packet
-# srcIP - the IP address for the source in this flow (the one sending data and the seq num refers to)
-# destIP - the IP address for the destination in this flow
 class FlowTracking:
     def __init__(self, startSeqNum, ackNumReceived, srcIP, dstIP):
         self.startSeqNum = startSeqNum;
@@ -67,7 +49,6 @@ def isFlowEgress(p, f):
    return False
 
 
-# TASK
 
 # Given a pcap file name as a string, this function will return the max number of bytes
 # that were in flight (unacknowledge) for this stream.
